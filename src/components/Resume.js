@@ -36,10 +36,27 @@ const IconContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
+  transition: all 0.3s ease;
   
   .icon {
     font-size: 2.5rem;
     color: white;
+    transition: all 0.3s ease;
+    animation: ${props => props.isHovered ? 'pulseSpin 1.5s linear infinite' : 'none'};
+  }
+  
+  @keyframes pulseSpin {
+    0% {
+      transform: rotate(0deg);
+      scale: 1;
+    }
+    50% {
+      scale: 1.25;
+    }
+    100% {
+      transform: rotate(360deg);
+      scale: 1;
+    }
   }
 `;
 
@@ -116,6 +133,8 @@ const ResumePreview = styled.div`
 `;
 
 const Resume = () => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   const handleDownload = () => {
     // In a real application, this would trigger the actual PDF download
     alert('Resume download would start here. Please replace with your actual resume PDF.');
@@ -130,7 +149,7 @@ const Resume = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <IconContainer>
+          <IconContainer isHovered={isHovered}>
             <FaFilePdf className="icon" />
           </IconContainer>
           
@@ -146,6 +165,8 @@ const Resume = () => {
               e.preventDefault();
               handleDownload();
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

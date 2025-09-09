@@ -6,8 +6,10 @@ const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent'};
-  backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
+  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.08)' : 'transparent'};
+  backdrop-filter: ${props => props.scrolled ? 'blur(20px)' : 'blur(0px)'};
+  border-bottom: ${props => props.scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid transparent'};
+  box-shadow: ${props => props.scrolled ? '0 8px 32px rgba(0, 0, 0, 0.1)' : '0 0px 0px rgba(0, 0, 0, 0)'};
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 1rem 0;

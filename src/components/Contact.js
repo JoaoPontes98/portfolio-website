@@ -19,7 +19,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -57,13 +57,17 @@ const ContactItem = styled(motion.div)`
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
   
   &:hover {
     transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   }
   
   .icon {
@@ -107,10 +111,14 @@ const ContactItem = styled(motion.div)`
 `;
 
 const ContactForm = styled(motion.form)`
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   padding: 2rem;
   border-radius: 16px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  align-self: end;
   
   .form-group {
     margin-bottom: 1.5rem;

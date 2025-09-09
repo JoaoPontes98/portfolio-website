@@ -67,14 +67,17 @@ const CompanyLogoCard = styled.div`
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: grayscale(100%);
   min-height: 120px;
   
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
+    filter: grayscale(0%);
   }
 `;
 
@@ -82,18 +85,70 @@ const CompanyLogo = styled.img`
   max-width: 100%;
   max-height: 80px;
   object-fit: contain;
-  filter: grayscale(100%);
   transition: filter 0.3s ease;
   
-  &:hover {
-    filter: grayscale(0%);
-  }
+
 `;
 
 const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const ProfileImageContainer = styled.div`
+  width: 340px;
+  height: 340px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: conic-gradient(
+      from 0deg,
+      #ff6b6b 0deg,
+      #ffa726 60deg,
+      #ff6b6b 120deg,
+      #ffa726 180deg,
+      #ff6b6b 240deg,
+      #ffa726 300deg,
+      #ff6b6b 360deg
+    );
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  &:hover {
+    transform: scale(1.05);
+    
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+      animation: rotate 2s linear infinite;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 290px;
+    height: 290px;
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 `;
 
 const ProfileImage = styled.div`
@@ -103,6 +158,7 @@ const ProfileImage = styled.div`
   overflow: hidden;
   position: relative;
   box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+  z-index: 2;
   
   &::before {
     content: '';
@@ -121,6 +177,13 @@ const ProfileImage = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
   }
   
   @media (max-width: 768px) {
@@ -184,12 +247,15 @@ const About = () => {
           viewport={{ once: true }}
         >
           <ImageContainer>
-            <ProfileImage>
-              <img 
-                src="/profile-photo.png" 
-                alt="João Pontes with Arnold the cat" 
-              />
-            </ProfileImage>
+            <ProfileImageContainer>
+              <ProfileImage>
+                <img 
+                  src="/profile-photo.png" 
+                  alt="João Pontes with Arnold the cat"
+                  draggable="false"
+                />
+              </ProfileImage>
+            </ProfileImageContainer>
           </ImageContainer>
         </motion.div>
       </Container>

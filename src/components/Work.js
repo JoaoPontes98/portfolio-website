@@ -306,6 +306,29 @@ const ProjectImage = styled.div`
   color: white;
   font-size: 2.5rem;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .fallback-text {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
 `;
 
 const ProjectContent = styled.div`
@@ -406,26 +429,20 @@ const Work = () => {
     {
       id: 1,
       title: "Nota - Engineering Capstone",
-      description: "A full-stack e-commerce application built with React frontend, Java Spring Boot backend, and PostgreSQL database. Features include user authentication, product catalog, shopping cart, and payment processing.",
-      tech: ["React", "Express", "MongoDB", "Docker", "AWS"],
+      description: "A full-stack production ready social media app. We sought out to build a social media app that used anonymous geo-tagged posts for user to explore and interact with. The point of this project was to show off our ability to make a fully scalable, production ready app equipped with automated testing, CI/CD, and more.",
+      tech: ["React", "Express", "MongoDB", "Node.js", "Jest"],
       gradient: "#ff6b6b 0%, #ffa726 100%",
-      githubUrl: "https://github.com/Dubble-bubble-original/engg4000"
+      githubUrl: "https://github.com/Dubble-bubble-original/engg4000",
+      image: "/project-imgs/nota-logo.png"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, team collaboration features, and project tracking capabilities. Built with modern web technologies.",
-      tech: ["React", "Node.js", "WebSocket", "MongoDB", "Docker"],
-      gradient: "#f093fb 0%, #f5576c 100%",
-      githubUrl: "https://github.com/JoaoPontes98/task-manager"
-    },
-    {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard that provides real-time weather data, forecasts, and location-based weather information with interactive charts and maps.",
-      tech: ["React", "JavaScript", "Chart.js", "API Integration"],
-      gradient: "#4facfe 0%, #00f2fe 100%",
-      githubUrl: "https://github.com/JoaoPontes98/weather-dashboard"
+      title: "Portfolio Website",
+      description: "Hope you're enjoying it! Just a little something I made to show off my work and skills.",
+      tech: ["React", "Spring Boot", "AWS", "Docker"],
+      gradient: "#ffa726 0%, #ff6b6b 100%",
+      githubUrl: "https://github.com/JoaoPontes98/portfolio-website",
+      image: "/project-imgs/JP-logo-background.png"
     }
   ];
 
@@ -506,7 +523,19 @@ const Work = () => {
           transition={{ duration: 0.6, delay: index * 0.1 }}
         >
           <ProjectImage gradient={project.gradient}>
-            {project.title.charAt(0)}
+            {project.image ? (
+              <img 
+                src={project.image} 
+                alt={`${project.title} project image`}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+            ) : null}
+            <div className="fallback-text" style={{ display: project.image ? 'none' : 'flex' }}>
+              {project.title.charAt(0)}
+            </div>
           </ProjectImage>
           <ProjectContent>
             <h3>{project.title}</h3>
