@@ -199,7 +199,12 @@ const Contact = () => {
     };
 
     try {
-            const response = await fetch('/api/contact', {
+      // Use backend endpoint for local development, Vercel endpoint for production
+      const apiUrl = process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:8080/api/contact/send'
+        : '/api/contact';
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
