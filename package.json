@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "echo 'Node.js version:' && node --version && echo 'npm version:' && npm --version && echo 'Starting build...' && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "serve -s build -l 3000"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -16,7 +17,8 @@
     "styled-components": "^6.1.1",
     "framer-motion": "^10.16.4",
     "react-icons": "^4.12.0",
-    "aws-sdk": "^2.1490.0"
+    "aws-sdk": "^2.1490.0",
+    "serve": "^14.2.1"
   },
   "browserslist": {
     "production": [

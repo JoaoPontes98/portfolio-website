@@ -19,9 +19,9 @@ services:
   - key: AWS_REGION
     value: ca-central-1
   - key: FROM_EMAIL
-    value: your-verified-ses-email@example.com
+    value: joao.vrpontes@gmail.com
   - key: TO_EMAIL
-    value: your-personal-email@gmail.com
+    value: joao.vrpontes@gmail.com
   - key: AWS_ACCESS_KEY_ID
     value: your-access-key
   - key: AWS_SECRET_ACCESS_KEY
