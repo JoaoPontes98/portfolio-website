@@ -25,6 +25,11 @@ const ResumeCard = styled(motion.div)`
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    margin: 0 20px;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -43,6 +48,16 @@ const IconContainer = styled.div`
     color: white;
     transition: all 0.3s ease;
     animation: ${props => props.isHovered ? 'pulseSpin 1.5s linear infinite' : 'none'};
+  }
+  
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    
+    .icon {
+      font-size: 2rem;
+    }
   }
   
   @keyframes pulseSpin {
@@ -76,6 +91,11 @@ const Description = styled.p`
   color: #666;
   line-height: 1.6;
   margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const DownloadButton = styled(motion.a)`
@@ -98,6 +118,15 @@ const DownloadButton = styled(motion.a)`
   
   .icon {
     font-size: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    
+    .icon {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -136,8 +165,14 @@ const Resume = () => {
   const [isHovered, setIsHovered] = React.useState(false);
 
   const handleDownload = () => {
-    // In a real application, this would trigger the actual PDF download
-    alert('Resume download would start here. Please replace with your actual resume PDF.');
+    // Create a link element to trigger download
+    const link = document.createElement('a');
+    link.href = '/resume/JOAO_PONTES_RESUME.pdf';
+    link.download = 'JOAO_PONTES_RESUME.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (

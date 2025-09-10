@@ -25,6 +25,10 @@ cd ..
 echo "⏳ Waiting for database to be ready..."
 sleep 10
 
+# Load environment variables for AWS SES
+echo "🔑 Loading AWS SES environment variables..."
+source backend/env-config.sh
+
 # Start backend (in background)
 echo "🔧 Starting Spring Boot backend..."
 cd backend

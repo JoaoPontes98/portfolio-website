@@ -67,7 +67,7 @@ code {
   color: white;
 }
 
-/* Responsive */
+/* Mobile optimizations */
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
@@ -75,5 +75,41 @@ code {
   
   .section {
     padding: 60px 0;
+  }
+  
+  /* Improve touch targets */
+  button, a, input, textarea, select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+  
+  /* Smooth scrolling for mobile */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices */
+  .btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .btn-secondary:hover {
+    background: transparent;
+    color: #ff6b6b;
   }
 }

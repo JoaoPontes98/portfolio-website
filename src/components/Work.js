@@ -29,6 +29,11 @@ const WorkSection = styled.section`
   min-height: 100vh;
   background: white;
   padding: 100px 0 150px 0;
+  
+  @media (max-width: 768px) {
+    min-height: auto;
+    padding: 100px 0 200px 0;
+  }
 `;
 
 const Container = styled.div`
@@ -64,6 +69,13 @@ const SubHeader = styled.div`
     max-width: 100%;
     margin: 0 20px 3rem 20px;
   }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0 10px 2rem 10px;
+    padding: 0.3rem;
+  }
 `;
 
 const SubHeaderItem = styled.button`
@@ -88,8 +100,10 @@ const SubHeaderItem = styled.button`
   }
   
   @media (max-width: 768px) {
-    padding: 0.8rem 1rem;
-    font-size: 0.9rem;
+    padding: 1rem;
+    font-size: 1rem;
+    flex: none;
+    width: 100%;
   }
 `;
 
@@ -97,6 +111,28 @@ const ContentContainer = styled.div`
   min-height: 600px;
   position: relative;
   margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    min-height: auto;
+    margin-bottom: 3rem;
+    position: static;
+  }
+`;
+
+const MobileContentWrapper = styled.div`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const DesktopContentWrapper = styled.div`
+  display: block;
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ContentSection = styled(motion.div)`
@@ -104,6 +140,10 @@ const ContentSection = styled(motion.div)`
   top: 0;
   left: 0;
   right: 0;
+`;
+
+const MobileContentSection = styled.div`
+  margin-bottom: 2rem;
 `;
 
 // Tech Stack Styles
@@ -116,7 +156,8 @@ const TechCategoriesGrid = styled.div`
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
+    margin: 0 10px 4rem 10px;
   }
   
   @media (max-width: 1200px) {
@@ -159,10 +200,6 @@ const TechGrid = styled.div`
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-    }
   }
   
   &.dev-tools-grid {
@@ -170,10 +207,6 @@ const TechGrid = styled.div`
     
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
     }
   }
 `;
@@ -189,6 +222,14 @@ const TechCard = styled(motion.div)`
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
     background: white;
+  }
+  
+  @media (max-width: 768px) {
+    &:active {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+      background: white;
+    }
   }
 `;
 
@@ -269,6 +310,10 @@ const TeamPhoto = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 16px;
+    
+    @media (max-width: 768px) {
+      object-position: left center;
+    }
   }
 `;
 
@@ -438,8 +483,8 @@ const Work = () => {
     {
       id: 2,
       title: "Portfolio Website",
-      description: "Hope you're enjoying it! Just a little something I made to show off my work and skills.",
-      tech: ["React", "Spring Boot", "AWS", "Docker"],
+      description: "Hope you're enjoying it! Just a little something I made to show off my work and skills. This was also my first attempt a mobile development. Be sure to check it out on your phone!",
+      tech: ["React", "Spring Boot", "AWS", "Docker", "Mobile Compatibility"],
       gradient: "#ffa726 0%, #ff6b6b 100%",
       githubUrl: "https://github.com/JoaoPontes98/portfolio-website",
       image: "/project-imgs/JP-logo-background.png"
@@ -500,6 +545,7 @@ const Work = () => {
             <h4>University of New Brunswick | May 2022 Grad</h4>
             <p>Co-Founder & President of UNB Developer Society</p>
             <p>IEEE NB Section Prize @ 2022 Engineering Design Symposium (Capstone Project)</p>
+            <p>Dean's List - 2019, 2020, 2021, 2022</p>
           </EducationInfo>
           <GPABadge>3.9 GPA</GPABadge>
         </EducationHeader>
@@ -593,21 +639,31 @@ const Work = () => {
           </SubHeaderItem>
         </SubHeader>
 
-        <ContentContainer>
-          <AnimatePresence mode="wait">
-            <ContentSection
-              key={activeSection}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              {activeSection === 'tech' && renderTechStack()}
-              {activeSection === 'education' && renderEducation()}
-              {activeSection === 'projects' && renderProjects()}
-            </ContentSection>
-          </AnimatePresence>
-        </ContentContainer>
+        <DesktopContentWrapper>
+          <ContentContainer>
+            <AnimatePresence mode="wait">
+              <ContentSection
+                key={activeSection}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                {activeSection === 'tech' && renderTechStack()}
+                {activeSection === 'education' && renderEducation()}
+                {activeSection === 'projects' && renderProjects()}
+              </ContentSection>
+            </AnimatePresence>
+          </ContentContainer>
+        </DesktopContentWrapper>
+
+        <MobileContentWrapper>
+          <MobileContentSection>
+            {activeSection === 'tech' && renderTechStack()}
+            {activeSection === 'education' && renderEducation()}
+            {activeSection === 'projects' && renderProjects()}
+          </MobileContentSection>
+        </MobileContentWrapper>
       </Container>
     </WorkSection>
   );

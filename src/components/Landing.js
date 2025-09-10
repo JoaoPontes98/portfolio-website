@@ -39,6 +39,7 @@ const Container = styled.div`
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+    padding-top: 80px;
   }
   
   @media (max-width: 1200px) {
@@ -65,7 +66,8 @@ const CubeContainer = styled.div`
   height: 400px;
   
   @media (max-width: 768px) {
-    height: 300px;
+    height: 200px;
+    margin-top: -50px;
   }
 `;
 
@@ -94,12 +96,42 @@ const CubeFace = styled.div`
     height: 150px;
   }
   
-  &:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
-  &:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
-  &:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
-  &:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
-  &:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
-  &:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
+  &:nth-child(1) { 
+    transform: rotateY(0deg) translateZ(100px);
+    @media (max-width: 768px) {
+      transform: rotateY(0deg) translateZ(75px);
+    }
+  }
+  &:nth-child(2) { 
+    transform: rotateY(90deg) translateZ(100px);
+    @media (max-width: 768px) {
+      transform: rotateY(90deg) translateZ(75px);
+    }
+  }
+  &:nth-child(3) { 
+    transform: rotateY(180deg) translateZ(100px);
+    @media (max-width: 768px) {
+      transform: rotateY(180deg) translateZ(75px);
+    }
+  }
+  &:nth-child(4) { 
+    transform: rotateY(-90deg) translateZ(100px);
+    @media (max-width: 768px) {
+      transform: rotateY(-90deg) translateZ(75px);
+    }
+  }
+  &:nth-child(5) { 
+    transform: rotateX(90deg) translateZ(100px);
+    @media (max-width: 768px) {
+      transform: rotateX(90deg) translateZ(75px);
+    }
+  }
+  &:nth-child(6) { 
+    transform: rotateX(-90deg) translateZ(100px);
+    @media (max-width: 768px) {
+      transform: rotateX(-90deg) translateZ(75px);
+    }
+  }
 `;
 
 const Title = styled(motion.h1)`
@@ -111,6 +143,7 @@ const Title = styled(motion.h1)`
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    white-space: normal;
   }
   
   @media (max-width: 480px) {

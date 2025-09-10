@@ -70,6 +70,14 @@ const ContactItem = styled(motion.div)`
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   }
   
+  @media (max-width: 768px) {
+    &:active {
+      transform: translateX(10px);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
   .icon {
     font-size: 1.5rem;
     color: #fff;

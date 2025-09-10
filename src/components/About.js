@@ -8,6 +8,10 @@ const AboutSection = styled.section`
   display: flex;
   align-items: center;
   padding: 100px 0;
+  
+  @media (max-width: 768px) {
+    padding: 100px 0 50px 0;
+  }
 `;
 
 const Container = styled.div`
@@ -52,13 +56,13 @@ const CompanyLogosGrid = styled.div`
   margin-top: 2rem;
   
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
   
   @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
   }
 `;
 
@@ -74,6 +78,16 @@ const CompanyLogoCard = styled.div`
   filter: grayscale(100%);
   min-height: 120px;
   
+  @media (max-width: 768px) {
+    padding: 1rem;
+    min-height: 80px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.75rem;
+    min-height: 70px;
+  }
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
@@ -86,8 +100,6 @@ const CompanyLogo = styled.img`
   max-height: 80px;
   object-fit: contain;
   transition: filter 0.3s ease;
-  
-
 `;
 
 const ImageContainer = styled.div`
@@ -141,8 +153,25 @@ const ProfileImageContainer = styled.div`
   }
   
   @media (max-width: 768px) {
-    width: 290px;
-    height: 290px;
+    &:active {
+      transform: scale(1.05);
+      
+      &::before {
+        opacity: 1;
+        transform: scale(1);
+        animation: rotate 2s linear infinite;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 320px;
+    height: 320px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 280px;
+    height: 280px;
   }
   
   @keyframes rotate {
@@ -187,8 +216,13 @@ const ProfileImage = styled.div`
   }
   
   @media (max-width: 768px) {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 240px;
+    height: 240px;
   }
 `;
 

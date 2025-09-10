@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { FaBars } from 'react-icons/fa';
+import MobileDrawer from './MobileDrawer';
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -13,6 +15,10 @@ const HeaderContainer = styled.header`
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 1rem 0;
+  
+  @media (max-width: 768px) {
+    transform: ${props => props.isOpen ? 'translateY(-100%)' : 'translateY(0)'};
+  }
 `;
 
 const Nav = styled.nav`
@@ -37,7 +43,21 @@ const NavLinks = styled.ul`
   gap: 2rem;
   
   @media (max-width: 768px) {
-    gap: 1rem;
+    display: none;
+  }
+`;
+
+const MobileMenuButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: ${props => props.scrolled ? '#333' : '#fff'};
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
@@ -48,6 +68,7 @@ const NavLink = styled.li`
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
+    padding: 0.5rem 0;
     
     &:hover {
       color: #ff6b6b;
@@ -72,6 +93,7 @@ const NavLink = styled.li`
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,42 +109,57 @@ const Header = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false); // Close mobile menu after navigation
     }
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <HeaderContainer scrolled={scrolled}>
-      <Nav>
-        <Logo scrolled={scrolled}>João Pontes</Logo>
-        <NavLinks>
-          <NavLink scrolled={scrolled}>
-            <a href="#landing" onClick={(e) => { e.preventDefault(); scrollToSection('landing'); }}>
-              Home
-            </a>
-          </NavLink>
-          <NavLink scrolled={scrolled}>
-            <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>
-              About
-            </a>
-          </NavLink>
-          <NavLink scrolled={scrolled}>
-            <a href="#work" onClick={(e) => { e.preventDefault(); scrollToSection('work'); }}>
-              Work
-            </a>
-          </NavLink>
-          <NavLink scrolled={scrolled}>
-            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>
-              Contact
-            </a>
-          </NavLink>
-          <NavLink scrolled={scrolled}>
-            <a href="#resume" onClick={(e) => { e.preventDefault(); scrollToSection('resume'); }}>
-              Resume
-            </a>
-          </NavLink>
-        </NavLinks>
-      </Nav>
-    </HeaderContainer>
+    <>
+      <HeaderContainer scrolled={scrolled} isOpen={isMobileMenuOpen}>
+        <Nav>
+          <Logo scrolled={scrolled}>João Pontes</Logo>
+          <MobileMenuButton scrolled={scrolled} onClick={toggleMobileMenu}>
+            <FaBars />
+          </MobileMenuButton>
+          <NavLinks>
+            <NavLink scrolled={scrolled}>
+              <a href="#landing" onClick={(e) => { e.preventDefault(); scrollToSection('landing'); }}>
+                Home
+              </a>
+            </NavLink>
+            <NavLink scrolled={scrolled}>
+              <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>
+                About
+              </a>
+            </NavLink>
+            <NavLink scrolled={scrolled}>
+              <a href="#work" onClick={(e) => { e.preventDefault(); scrollToSection('work'); }}>
+                Work
+              </a>
+            </NavLink>
+            <NavLink scrolled={scrolled}>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>
+                Contact
+              </a>
+            </NavLink>
+            <NavLink scrolled={scrolled}>
+              <a href="#resume" onClick={(e) => { e.preventDefault(); scrollToSection('resume'); }}>
+                Resume
+              </a>
+            </NavLink>
+          </NavLinks>
+        </Nav>
+      </HeaderContainer>
+      <MobileDrawer 
+        isOpen={isMobileMenuOpen} 
+        onClose={toggleMobileMenu} 
+        onNavigate={scrollToSection}
+      />
+    </>
   );
 };
 
