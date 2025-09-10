@@ -3,6 +3,19 @@
 
 const AWS = require('aws-sdk');
 
+// Diagnostic logging
+console.log('=== SERVERLESS FUNCTION DIAGNOSTICS ===');
+console.log('Node.js version:', process.version);
+console.log('Node.js platform:', process.platform);
+console.log('Node.js arch:', process.arch);
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('AWS_REGION:', process.env.AWS_REGION);
+console.log('FROM_EMAIL:', process.env.FROM_EMAIL);
+console.log('TO_EMAIL:', process.env.TO_EMAIL);
+console.log('AWS_ACCESS_KEY_ID exists:', !!process.env.AWS_ACCESS_KEY_ID);
+console.log('AWS_SECRET_ACCESS_KEY exists:', !!process.env.AWS_SECRET_ACCESS_KEY);
+console.log('=====================================');
+
 // Configure AWS SES
 const ses = new AWS.SES({
   region: process.env.AWS_REGION || 'ca-central-1',

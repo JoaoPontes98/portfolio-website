@@ -2,6 +2,9 @@
   "functions": {
     "api/contact.js": {
       "runtime": "@vercel/node@3.0.7"
+    },
+    "api/diagnostics.js": {
+      "runtime": "@vercel/node@3.0.7"
     }
   }
 }

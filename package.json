@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "echo 'Node.js version:' && node --version && echo 'npm version:' && npm --version && echo 'Starting build...' && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
