@@ -4,12 +4,7 @@
   "outputDirectory": "build",
   "functions": {
     "api/contact.js": {
-        "runtime": "@vercel/node@3.0.7"
-    }
-  },
-  "build": {
-    "env": {
-      "NODE_VERSION": "20"
+      "runtime": "@vercel/node@3.0.7"
     }
   }
 }

@@ -1,6 +1,6 @@
 # João Pontes - Portfolio Website
 
-A modern, responsive portfolio website showcasing full-stack development skills with React frontend, Java Spring Boot backend, PostgreSQL database, and AWS cloud infrastructure. Features a fully functional contact form with AWS SES email integration. **Optimized and streamlined** for minimal dependencies and maximum performance.
+A modern, responsive portfolio website showcasing full-stack development skills with React frontend and AWS SES email integration. Features a fully functional contact form with serverless functions. **Optimized and streamlined** for minimal dependencies and maximum performance.
 
 ## 🚀 Tech Stack
 
