@@ -2,7 +2,6 @@
 // This replaces the Spring Boot backend
 
 const AWS = require('aws-sdk');
-
 // Diagnostic logging
 console.log('=== SERVERLESS FUNCTION DIAGNOSTICS ===');
 console.log('Node.js version:', process.version);
