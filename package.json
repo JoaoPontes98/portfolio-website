@@ -15,7 +15,8 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
     "framer-motion": "^10.0.0",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "aws-sdk": "^2.1490.0"
   },
   "browserslist": {
     "production": [
