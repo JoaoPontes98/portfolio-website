@@ -33,8 +33,5 @@
   "devDependencies": {
     "@types/styled-components": "^5.1.26"
   },
-  "engines": {
-    "node": "22.x"
-  },
   "packageManager": "npm@10.9.3"
 }
