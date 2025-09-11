@@ -260,7 +260,7 @@ const About = () => {
               </CompanyLogoCard>
               <CompanyLogoCard>
                 <CompanyLogo 
-                  src="/company-logos/deloitte-logo.png" 
+                  src="/company-logos/Deloitte-Logo.png" 
                   alt="Deloitte Logo"
                 />
               </CompanyLogoCard>
