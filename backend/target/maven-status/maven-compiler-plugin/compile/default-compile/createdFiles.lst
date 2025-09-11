@@ -1,0 +1,6 @@
+com/portfolio/dto/ContactMessageDto.class
+com/portfolio/config/SecurityConfig.class
+com/portfolio/PortfolioApplication.class
+com/portfolio/controller/ContactController.class
+com/portfolio/service/ContactService.class
+com/portfolio/config/AwsConfig.class

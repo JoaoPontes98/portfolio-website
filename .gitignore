@@ -16,6 +16,7 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+# Environment variables (if backend is kept for local dev)
 backend/.env
 backend/env-config.sh
 
@@ -109,36 +110,9 @@ public
 tmp/
 temp/
 
-# Java/Maven specific
-backend/target/
-backend/.mvn/wrapper/maven-wrapper.jar
-backend/.mvn/wrapper/maven-wrapper.properties
-backend/mvnw
-backend/mvnw.cmd
-backend/.classpath
-backend/.project
-backend/.settings/
-backend/.vscode/
-
-# Spring Boot
-backend/logs/
-backend/application-*.properties
-backend/application-*.yml
-
-# Database
-backend/database/
-backend/*.db
-backend/*.sqlite
-backend/*.sqlite3
-
 # Docker
 docker-compose.override.yml
 .dockerignore
-
-# Test files
-backend/test-email.sh
-backend/test-ses-setup.sh
-backend/iam-policy.json
 
 # Backup files
 *.bak
