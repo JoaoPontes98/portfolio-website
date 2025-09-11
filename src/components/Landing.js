@@ -11,6 +11,16 @@ const LandingSection = styled.section`
   color: white;
   position: relative;
   overflow: hidden;
+  padding: 80px 0 120px 0;
+  
+  @media (max-width: 768px) {
+    min-height: auto;
+    padding: 100px 0 100px 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 80px 0 80px 0;
+  }
   
   &::before {
     content: '';
@@ -34,12 +44,14 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   z-index: 1;
+  min-height: calc(100vh - 200px);
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 0;
+    min-height: auto;
   }
   
   @media (max-width: 1200px) {
@@ -56,6 +68,7 @@ const TextContent = styled.div`
     text-align: center;
     padding-left: 0;
     margin-left: 0;
+    margin-top: 20px;
   }
 `;
 
@@ -67,7 +80,9 @@ const CubeContainer = styled.div`
   
   @media (max-width: 768px) {
     height: 200px;
-    margin-top: -50px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    transform: translateY(-20px);
   }
 `;
 
@@ -144,10 +159,12 @@ const Title = styled(motion.h1)`
   @media (max-width: 768px) {
     font-size: 2rem;
     white-space: normal;
+    margin-top: 20px;
   }
   
   @media (max-width: 480px) {
     font-size: 1.5rem;
+    margin-top: 15px;
   }
 `;
 
@@ -173,7 +190,7 @@ const Subtitle = styled(motion.p)`
 
 const Description = styled(motion.p)`
   font-size: 1.1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   opacity: 0.8;
   max-width: 500px;
 `;
@@ -219,6 +236,11 @@ const ScrollIndicator = styled(motion.div)`
   gap: 10px;
   color: white;
   opacity: 0.7;
+  z-index: 10;
+  
+  @media (max-width: 768px) {
+    bottom: 20px;
+  }
 `;
 
 const ScrollText = styled.span`
