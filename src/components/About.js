@@ -240,7 +240,7 @@ const About = () => {
             <h2>About Me</h2>
             <p>
               I'm a passionate software engineer with a strong foundation in modern web technologies. 
-              I have experience in building entprise-grade applications in multple sectors ranging from fintech, cloud consulting, to cybersecurity.
+              I have experience in building enterprise-grade applications in multple sectors ranging from fintech, cloud consulting, to cybersecurity.
             </p>
             <p>
               With expertise in React for frontend development, Java Spring Boot or Python Flask for backend services, 
